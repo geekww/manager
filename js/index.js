@@ -16,7 +16,23 @@ $(function () {
             return true;
         };
         if(_validatePost()){
-            window.location.href = "page/main/index.html";
+            $.ajax({
+                type:'post',
+                url:'/manager/jsp/login.jsp',
+                data:{
+                    username: $('#username').val(),
+                    password: $('#password').val()
+                },
+                success:function (data) {
+                    if(data.code === 1){
+                        layer.msg(data.msg);
+                        setTimeout(function () {
+                            window.location.href = "page/main/index.html";
+                        },2000);
+                    }
+                }
+            });
+
         }
     });
 });

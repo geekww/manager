@@ -10,37 +10,54 @@
 <body>
 <div class="main-box">
     <fieldset class="layui-elem-field layui-field-title">
-        <legend>修改密码</legend>
+        <legend>预定会议室</legend>
     </fieldset>
     <div class="inner">
         <form class="layui-form layui-form-pane">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">旧密码：</label>
+                    <label class="layui-form-label">会议室号：</label>
                     <div class="layui-input-block">
-                        <input type="password" name="password" placeholder="输入旧密码" autocomplete="off" class="layui-input" id="oldKey">
+                        <input type="text" id="name" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">预定人：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="uid" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">新密码：</label>
+                    <label class="layui-form-label">部门：</label>
                     <div class="layui-input-block">
-                        <input type="password" name="password" placeholder="输入新密码" autocomplete="off" class="layui-input" id="newKey">
+                        <input type="text" id="department" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">预定日期：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="date" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">重复密码：</label>
+                    <label class="layui-form-label">开始时间</label>
                     <div class="layui-input-block">
-                        <input type="password" name="password" placeholder="确认新密码" autocomplete="off" class="layui-input" id="repKey">
+                        <input type="text" class="layui-input" id="start">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="end">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
                 <button class="layui-btn" id="submit">提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </form>
     </div>
