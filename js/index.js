@@ -2,10 +2,10 @@ $(function () {
     $('#login-btn').click(function () {
         // 登录校验
         var _validatePost = function(){
-            var $userName = $('#username'),
+            var $uid = $('#uid'),
                 $password =  $('#password');
 
-            if(!$userName.val()){
+            if(!$uid.val()){
                 layer.msg('请输入您的账号');
                 return false;
             }
@@ -20,19 +20,19 @@ $(function () {
                 type:'post',
                 url:'/manager/jsp/login.jsp',
                 data:{
-                    username: $('#username').val(),
+                    uid: $('#uid').val(),
                     password: $('#password').val()
                 },
-                success:function (data) {
-                    if(data.code === 1){
-                        layer.msg(data.msg);
+                success:function (res) {
+                    var resObj = $.parseJSON(res);
+                    layer.msg(resObj.msg);
+                    if(resObj.code === 1){
                         setTimeout(function () {
                             window.location.href = "page/main/index.html";
                         },2000);
                     }
                 }
             });
-
         }
     });
 });
