@@ -1,26 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="/manager/plugin/layui/css/layui.css">
-    <link rel="stylesheet" href="/manager/css/public.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title></title>-->
+    <!--<link rel="stylesheet" href="/manager/plugin/layui/css/layui.css">-->
+    <!--<link rel="stylesheet" href="/manager/css/public.css">-->
+    <!--<link rel="stylesheet" href="css/style.css">-->
+<!--</head>-->
+<!--<body>-->
 <div class="main-box">
     <fieldset class="layui-elem-field layui-field-title">
         <legend>查看部门</legend>
     </fieldset>
     <div class="departTable">
         <div class="layui-inline">
-            <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+            <input class="layui-input" id="department" autocomplete="off">
         </div>
-        <button class="layui-btn" data-type="reload">搜索部门</button>
+        <input type="button" class="layui-btn" value="搜索部门" id="search">
     </div>
 
-    <table class="layui-hide" id="view" lay-filter="user"></table>
+    <table class="layui-hide" id="view"></table>
 </div>
+
+<script type="text/html" id="toolbar">
+    <a class="layui-btn layui-btn-xs" lay-event="update">更新</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
 
 <script src="/manager/plugin/jquery/jquery-1.9.1.min.js"></script>
 <script src="/manager/plugin/layer/layer.js"></script>

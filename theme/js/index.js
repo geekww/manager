@@ -28,7 +28,7 @@ $(function () {
                     layer.msg(resObj.msg);
                     if(resObj.code === 1){
                         setTimeout(function () {
-                            window.location.href = "page/main/index.html";
+                            window.location.href = "../../page/main/index.html";
                         },2000);
                     }
                 }

@@ -13,7 +13,8 @@
     <div class="layui-header">
         <div class="layui-logo">企业会议管理系统</div>
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="">人事模块</a></li>
+            <li class="layui-nav-item"><a href="">行政模块</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -61,11 +62,6 @@
                                 <cite>添加部门</cite>
                             </a>
                         </li>
-                        <li>
-                            <a data-href="/manager/page/department/del.html">
-                                <cite>删除部门</cite>
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 <li class="layui-nav-item">
@@ -82,11 +78,6 @@
                         <li>
                             <a data-href="/manager/page/user/add.html">
                                 <cite>添加员工</cite>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-href="/manager/page/user/del.html">
-                                <cite>删除员工</cite>
                             </a>
                         </li>
                     </ul>
@@ -171,20 +162,20 @@
     }).use('admin');
     layui.use(['jquery','admin'], function(){
         var $ = layui.jquery;
-        $(function(){
-            var login = JSON.parse(localStorage.getItem("login"));
-            if(login){
-                if(login=0){
-                    window.location.href='';
-                    return false;
-                }else{
-                    return false;
-                }
-            }else{
-                window.location.href='';
-                return false;
-            }
-        });
+        // $(function(){
+        //     var login = JSON.parse(localStorage.getItem("login"));
+        //     if(login){
+        //         if(login=0){
+        //             window.location.href='';
+        //             return false;
+        //         }else{
+        //             return false;
+        //         }
+        //     }else{
+        //         window.location.href='';
+        //         return false;
+        //     }
+        // });
     });
 </script>
 </body>

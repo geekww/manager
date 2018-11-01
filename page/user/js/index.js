@@ -17,7 +17,9 @@ $(function () {
                     ,{field:'tel', title: '电话号码',align:'center'}
                     ,{field:'addr', title: '家庭住址',align:'center'}
                     ,{field:'department', title: '所属部门',align:'center'}
+                    ,{fixed: 'right', title:'操作',align:'center', toolbar: '#toolbar', width:150}
                 ]]
+                ,toolbar:true
                 ,page: true
                 ,height: 315
             });
