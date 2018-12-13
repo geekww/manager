@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/manager/plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="/manager/theme/css/public.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main-box">
+    <fieldset class="layui-elem-field layui-field-title" style="margin: 50px 0 30px;">
+        <legend>当前项目总数：<span id="total"></span></legend>
+    </fieldset>
+    <fieldset class="layui-elem-field layui-field-title" style="margin: 50px 0 30px;">
+        <legend>完成率</legend>
+    </fieldset>
+    <div class="layui-progress" lay-showpercent="true" style="width: 70%">
+        <div class="layui-progress-bar" lay-percent="0%" id="finish"></div>
+    </div>
+    <fieldset class="layui-elem-field layui-field-title" style="margin: 50px 0 30px;">
+        <legend>延误率</legend>
+    </fieldset>
+    <div class="layui-progress" lay-showpercent="true" style="width: 70%">
+    <div class="layui-progress-bar" lay-percent="" id="delay"></div>
+</div>
+</div>
+
+<script src="/manager/plugin/jquery/jquery-1.9.1.min.js"></script>
+<script src="/manager/plugin/layer/layer.js"></script>
+<script src="/manager/plugin/layui/layui.js"></script>
+<script src="/manager/theme/js/public.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>

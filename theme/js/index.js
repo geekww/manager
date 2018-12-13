@@ -24,7 +24,7 @@ $(function () {
                     password: $('#password').val()
                 },
                 success:function (res) {
-                    var resObj = $.parseJSON(res);
+                    let resObj = $.parseJSON(res);
                     layer.msg(resObj.msg);
                     if(resObj.code === '1'){
                         setTimeout(function () {

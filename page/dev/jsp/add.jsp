@@ -9,32 +9,37 @@
   //连接数据库
   String url="jdbc:mysql://127.0.0.1/manager?user=root&password=root";
   Class.forName("com.mysql.jdbc.Driver").newInstance();
-  Connection connection=Drivermanager.getConnection(url);
+  Connection connection=DriverManager.getConnection(url);
   Statement statement = connection.createStatement();
 
   //获取页面参数
+  String name = request.getParameter("name");
   String uid = request.getParameter("uid");
-  String oldKey = request.getParameter("oldKey");
-  String newKey = request.getParameter("newKey");
+  String sex = request.getParameter("sex");
+  String tel = request.getParameter("tel");
+  String position = request.getParameter("position");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sql="select password from uf_hrresource where uid='"+uid+"'";
+  String sql="select * from uf_hrresource where uid='"+uid+"'";
   ResultSet rs = statement.executeQuery(sql);
   if(rs.next()) {
-    if(oldKey.equals(rs.getString("password"))){
-      //修改密码操作
-      resultObj.put("msg","修改成功");
-    }else{
-      resultObj.put("msg","密码错误");
-    }
+    resultObj.put("msg","工号已存在");
   }else{
-    resultObj.put("msg","用户不存在");
+    String sqlinsert = "insert into uf_hrresource (name,uid,sex,tel,position) values ('"+name+"','"+uid+"','"+sex+"','"+tel+"','"+position+"')";
+    int flag = statement.executeUpdate(sqlinsert);
+    if(flag == 1){
+      resultObj.put("msg","添加成功");
+    }else{
+      resultObj.put("msg","添加失败");
+    }
   }
-
+  resultObj.put("code",0);
+  resultObj.put("data",data);
   out.print(resultObj);
+
   rs.close();
   statement.close();
   connection.close();

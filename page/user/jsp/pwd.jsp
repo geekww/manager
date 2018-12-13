@@ -9,7 +9,7 @@
   //连接数据库
   String url="jdbc:mysql://127.0.0.1/manager?user=root&password=root";
   Class.forName("com.mysql.jdbc.Driver").newInstance();
-  Connection connection=Drivermanager.getConnection(url);
+  Connection connection=DriverManager.getConnection(url);
   Statement statement = connection.createStatement();
 
   //获取页面参数
@@ -25,8 +25,13 @@
   ResultSet rs = statement.executeQuery(sql);
   if(rs.next()) {
     if(oldKey.equals(rs.getString("password"))){
-      //修改密码操作
-      resultObj.put("msg","修改成功");
+      int flag = statement.executeUpdate("update uf_hrresource set password='"+newKey+"' where uid='"+uid+"'");
+      if (flag == 1){
+        //修改密码操作
+        resultObj.put("msg","修改成功");
+      }else{
+        resultObj.put("msg","修改失败");
+      }
     }else{
       resultObj.put("msg","密码错误");
     }

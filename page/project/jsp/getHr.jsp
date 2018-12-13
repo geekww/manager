@@ -12,31 +12,23 @@
   Connection connection=DriverManager.getConnection(url);
   Statement statement = connection.createStatement();
 
-  //获取页面参数
-  String uid = request.getParameter("uid");
-  String password = request.getParameter("password");
-
   JSONObject resultObj = new JSONObject();
-  JSONObject row = new JSONObject();
-  JSONArray data = new JSONArray();
+  JSONObject rowhr = new JSONObject();
+  JSONArray datahr = new JSONArray();
 
-  String sql="select * from uf_hrresource where uid='"+uid+"'";
-  ResultSet rs = statement.executeQuery(sql);
-  if(rs.next()) {
-    if(password.equals(rs.getString("password"))){
-      resultObj.put("code","1");
-      resultObj.put("msg","登录成功");
-    }else{
-      resultObj.put("code","0");
-      resultObj.put("msg","密码错误");
-    }
-  }else{
-    resultObj.put("code","0");
-    resultObj.put("msg","用户不存在");
+  // 查询人员
+  String sqlhr="select * from uf_hrresource where uid <> 'admin' order by uid";
+  ResultSet rshr = statement.executeQuery(sqlhr);
+  while(rshr.next()) {
+    rowhr.put("uid",rshr.getString("uid"));
+    rowhr.put("name",rshr.getString("name"));
+    datahr.add(rowhr);
   }
+  resultObj.put("code",0);
+  resultObj.put("datahr",datahr);
   out.print(resultObj);
 
-  rs.close();
+  rshr.close();
   statement.close();
   connection.close();
 %>

@@ -9,33 +9,26 @@
   //连接数据库
   String url="jdbc:mysql://127.0.0.1/manager?user=root&password=root";
   Class.forName("com.mysql.jdbc.Driver").newInstance();
-  Connection connection=Drivermanager.getConnection(url);
+  Connection connection=DriverManager.getConnection(url);
   Statement statement = connection.createStatement();
 
   //获取页面参数
-  String uid = request.getParameter("uid");
-  String oldKey = request.getParameter("oldKey");
-  String newKey = request.getParameter("newKey");
+  String id = request.getParameter("id");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sql="select password from uf_hrresource where uid='"+uid+"'";
-  ResultSet rs = statement.executeQuery(sql);
-  if(rs.next()) {
-    if(oldKey.equals(rs.getString("password"))){
-      //修改密码操作
-      resultObj.put("msg","修改成功");
-    }else{
-      resultObj.put("msg","密码错误");
-    }
+  String sqldel = "delete from uf_task where id='"+id+"'";
+  int flag = statement.executeUpdate(sqldel);
+  if(flag == 1){
+    resultObj.put("msg","删除成功");
   }else{
-    resultObj.put("msg","用户不存在");
+    resultObj.put("msg","删除失败");
   }
 
+  resultObj.put("code",0);
   out.print(resultObj);
-  rs.close();
   statement.close();
   connection.close();
 %>

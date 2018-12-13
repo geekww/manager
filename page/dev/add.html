@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/manager/plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="/manager/theme/css/public.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main-box">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>新增人员</legend>
+    </fieldset>
+    <div class="inner">
+        <form class="layui-form layui-form-pane">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">姓名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="name" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">工号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="uid" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">性别：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="sex" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">电话号码：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="tel" autocomplete="off" class="layui-input" maxlength="11">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">职位：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="position" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <input type="button" class="layui-btn" id="submit" value="提交">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/manager/plugin/jquery/jquery-1.9.1.min.js"></script>
+<script src="/manager/plugin/layer/layer.js"></script>
+<script src="/manager/plugin/layui/layui.js"></script>
+<script src="/manager/theme/js/public.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>

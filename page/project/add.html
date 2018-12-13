@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/manager/plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="/manager/theme/css/public.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main-box">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>创建项目</legend>
+    </fieldset>
+    <div class="inner">
+        <form class="layui-form layui-form-pane" id="projectAdd">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">项目编号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="pid" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">项目名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="name" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">负责人：</label>
+                    <div class="layui-input-block" style="width: 180px;">
+                        <select id="fzr"></select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">创建日期：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="date" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">项目描述：</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" id="dsc" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <input type="button" class="layui-btn" id="create" value="提交">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/manager/plugin/jquery/jquery-1.9.1.min.js"></script>
+<script src="/manager/plugin/layer/layer.js"></script>
+<script src="/manager/plugin/layui/layui.js"></script>
+<script src="/manager/theme/js/public.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>

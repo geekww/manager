@@ -22,3 +22,5 @@ a{text-decoration:none;cursor:pointer;color: inherit;color:#666;}
 .right{float:right;}
 
 .layui-table-view{width: fit-content;}
+#date,#create,#planeFinish,#di-date{cursor: pointer;}
+.layui-table-hover:hover{cursor: pointer!important;}

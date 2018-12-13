@@ -1,0 +1,19 @@
+.main-box{padding: 20px 10px;}
+.inner{width: 700px;}
+.layui-layer-setwin a{
+    position: absolute!important;
+    top: -40px;
+    right: -40px;
+    background: url('../../../src/close-icon.png') no-repeat;
+    background-position: 0 0!important;
+    width: 20px!important;
+    height: 20px!important;
+    transition: .4s;
+}
+.layui-layer-setwin a:hover{
+    transform:rotateZ(-180deg);
+    -webkit-transform:rotateZ(-180deg);
+    -moz-transform:rotateZ(-180deg);
+    -ms-transform:rotateZ(-180deg);
+    -o-transform:rotateZ(-180deg);
+}
