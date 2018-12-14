@@ -1,34 +1,36 @@
 $(function () {
     $('#search').click(function () {
-        let name = $('#name').val();
-        if(!name){
-            layer.msg('请输入姓名');
+        let task = $('#task').val();
+        if(!task){
+            layer.msg('请输入任务名');
             return false;
         }
 
         layui.use('table', function(){
             var table = layui.table;
 
-            //方法级渲染
             table.render({
                 elem: '#view',
-                url: '/manager/page/task/jsp/show.jsp?name='+name,
+                url: '/manager/page/task/jsp/show.jsp?task='+task,
                 cols: [[
-                    {field:'uid', title: '工号',align:'center',width:100},
-                    {field:'name', title: '姓名',align:'center',width:120},
-                    {field:'sex', title: '性别',align:'center',width:100},
-                    {field:'age', title: '年龄',align:'center',width:100},
-                    {field:'tel', title: '电话号码',align:'center',width:180},
-                    {field:'departname', title: '所属部门',align:'center',width:150},
-                    {field:'addr', title: '家庭住址',align:'center',width:300},
-                    {fixed: 'right', title:'操作',align:'center', toolbar: '#toolbar',width:150}
+                    {field:'id', title: 'id',align:'center',width:100},
+                    // {field:'belong', title: '所属项目',align:'center',width:180},
+                    {field:'task', title: '任务名',align:'center',width:200},
+                    {field:'createtime', title: '创建时间',align:'center',width:110},
+                    {field:'planefinish', title: '计划完成时间',align:'center',width:120},
+                    {field:'fzr', title: '负责人',align:'center',width:80},
+                    {field:'cjz', title: '创建者',align:'center',width:80},
+                    {field:'state', title: '任务状态',align:'center',width:90},
+                    {field:'dsc', title: '任务描述',align:'center',width:200},
+                    {field:'bz', title: '备注',align:'center',width:100},
+                    {fixed: 'right', title:'操作', toolbar: '#toolbar', align:'center',width:150}
                 ]],
                 done: function(res){
 
                 },
                 page: true,
                 height: 315,
-                toolbar:true,
+                // toolbar:true,
             });
         });
     });
@@ -124,7 +126,7 @@ $(function () {
                 {field:'state', title: '任务状态',align:'center',width:90},
                 {field:'dsc', title: '任务描述',align:'center',width:200},
                 {field:'bz', title: '备注',align:'center',width:100},
-                {fixed: 'right', title:'操作', toolbar: '#toolbar', width:150}
+                {fixed: 'right', title:'操作', toolbar: '#toolbar',align:'center', width:150}
             ]],
             done: function(res){
 
@@ -138,7 +140,7 @@ $(function () {
         table.on('tool(view)', function(obj){
             let data = obj.data;
             if(obj.event === 'del'){
-                layer.confirm('确定删除当前项目？', function(index){
+                layer.confirm('确定删除当前任务？', function(index){
                     let $id = data.id;
                     // 删除数据
                     $.ajax({

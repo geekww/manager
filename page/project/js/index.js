@@ -19,7 +19,7 @@ $(function () {
                 {field:'date', title: '创建日期',align:'center', width:150},
                 {field:'fzr', title: '负责人',align:'center', width:150},
                 {field:'dsc', title: '项目描述',align:'center', width:300},
-                {fixed: 'right', title:'操作', toolbar: '#toolbar', width:150}
+                {fixed: 'right', title:'操作', toolbar: '#toolbar',align:'center', width:150}
             ]],
             done: function(res){
 
@@ -85,6 +85,11 @@ $(function () {
                                         $name = $('#name').val(),
                                         $fzr = $('#fzr').val(),
                                         $dsc = $('#dsc').val();
+
+                                    if(!$name){
+                                        layer.msg('请输入项目名');
+                                        return false;
+                                    }
 
                                     $.ajax({
                                         type:'post',

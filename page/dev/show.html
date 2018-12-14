@@ -12,8 +12,13 @@
     <fieldset class="layui-elem-field layui-field-title">
         <legend>查看人员</legend>
     </fieldset>
-    <table id="view"></table>
+    <table id="view" lay-filter="view"></table>
 </div>
+
+<script type="text/html" id="toolbar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
 
 <script src="/manager/plugin/jquery/jquery-1.9.1.min.js"></script>
 <script src="/manager/plugin/layer/layer.js"></script>

@@ -13,38 +13,22 @@
   Statement statement = connection.createStatement();
 
   //获取页面参数
-  String task = request.getParameter("task");
-
-  String sql ="";
-  if(task == null ){
-    sql="select * from uf_task order by id";
-  }else{
-    sql="select * from uf_task where task = '"+task+"' order by id";
-  }
+  String uid = request.getParameter("uid");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  ResultSet rs = statement.executeQuery(sql);
-  while(rs.next()) {
-    row.put("id",rs.getString("id"));
-    row.put("belong",rs.getString("belong"));
-    row.put("task",rs.getString("task"));
-    row.put("createtime",rs.getString("createtime"));
-    row.put("planefinish",rs.getString("planefinish"));
-    row.put("fzr",rs.getString("fzr"));
-    row.put("cjz",rs.getString("cjz"));
-    row.put("state",rs.getString("state"));
-    row.put("dsc",rs.getString("dsc"));
-    row.put("bz",rs.getString("bz"));
-    data.add(row);
+  String sqldel = "delete from uf_hrresource where uid='"+uid+"'";
+  int flag = statement.executeUpdate(sqldel);
+  if(flag == 1){
+    resultObj.put("msg","删除成功");
+  }else{
+    resultObj.put("msg","删除失败");
   }
-  resultObj.put("code",0);
-  resultObj.put("data",data);
-  out.print(resultObj);
 
-  rs.close();
+  resultObj.put("code",0);
+  out.print(resultObj);
   statement.close();
   connection.close();
 %>
