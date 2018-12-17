@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53903556-84cb-4e1f-960c-0ca9df274954" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/page/team/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/jsp/add.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/jsp/delProject.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/jsp/getHr.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/jsp/search.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/jsp/show.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/jsp/updateProject.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/team/show.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page/user/myTask.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/dev/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/dev/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/user/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/page/user/js/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="53903556-84cb-4e1f-960c-0ca9df274954" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -73,8 +56,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/page/team/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="174" column="25" lean-forward="true" selection-start-line="174" selection-start-column="25" selection-end-line="174" selection-end-column="25" />
+            <state relative-caret-position="328">
+              <caret line="188" column="46" lean-forward="true" selection-start-line="188" selection-start-column="46" selection-end-line="188" selection-end-column="46" />
               <folding>
                 <element signature="n#style#0;n#label#0;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#form#0;n#!!top" expanded="true" />
@@ -465,12 +448,12 @@
       <workItem from="1544705306377" duration="7144000" />
       <workItem from="1544746516550" duration="6971000" />
       <workItem from="1544789095970" duration="608000" />
-      <workItem from="1545047210515" duration="8259000" />
+      <workItem from="1545047210515" duration="8834000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119536000" />
+    <option name="totallyTimeSpent" value="120111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -861,8 +844,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/page/team/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="174" column="25" lean-forward="true" selection-start-line="174" selection-start-column="25" selection-end-line="174" selection-end-column="25" />
+        <state relative-caret-position="328">
+          <caret line="188" column="46" lean-forward="true" selection-start-line="188" selection-start-column="46" selection-end-line="188" selection-end-column="46" />
           <folding>
             <element signature="n#style#0;n#label#0;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#form#0;n#!!top" expanded="true" />
