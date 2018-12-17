@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/manager/plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="/manager/theme/css/public.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main-box">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>创建团队</legend>
+    </fieldset>
+    <div class="inner">
+        <form class="layui-form layui-form-pane" id="teamAdd">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">选择项目：</label>
+                    <div class="layui-input-block">
+                        <select id="name"></select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">项目经理：</label>
+                    <div class="layui-input-block">
+                        <select id="manager"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">前端开发：</label>
+                    <div class="layui-input-block" id="page" style="width:550px;border: 1px solid #e6e6e6;min-height: 38px;"></div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">后端开发：</label>
+                    <div class="layui-input-block" id="back" style="width:550px;border: 1px solid #e6e6e6;min-height: 38px;"></div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">测试：</label>
+                    <div class="layui-input-block" id="test" style="width:550px;border: 1px solid #e6e6e6;min-height: 38px;"></div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <input type="button" class="layui-btn" id="create" value="提交">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/manager/plugin/jquery/jquery-1.9.1.min.js"></script>
+<script src="/manager/plugin/layer/layer.js"></script>
+<script src="/manager/plugin/layui/layui.js"></script>
+<script src="/manager/theme/js/public.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>

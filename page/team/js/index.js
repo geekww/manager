@@ -1,54 +1,5 @@
 $(function () {
-    $('#submit').click(function () {
-        let isKey = /^\d{3,16}$/;//验证3-16位数字
-        let $uid = $('#uid'),
-            $oldKey = $('#oldKey'),
-            $newKey = $('#newKey'),
-            $repKey = $('#repKey');
-
-        if(!$uid.val()){
-            layer.msg('请输入工号');
-            return false;
-        }
-        if(!isKey.test($oldKey.val())){
-            layer.msg('请输入原密码（3-16位英文数字）');
-            return false;
-        }
-        if(!isKey.test($newKey.val())){
-            layer.msg('请输入新密码（3-16位英文数字）');
-            return false;
-        }
-        if(!isKey.test($repKey.val())){
-            layer.msg('确认密码（3-16位英文数字）');
-            return false;
-        }
-        if($oldKey.val() === $newKey.val()){
-            layer.msg('新密码与旧密码重复');
-            return false;
-        }
-        if($newKey.val() !== $repKey.val()){
-            layer.msg('新密码两次输入不一致');
-            return false;
-        }
-
-        $.ajax({
-            type: "post",
-            url: '/manager/page/user/jsp/pwd.jsp',
-            data: {
-                uid:$uid.val(),
-                oldKey:$oldKey.val(),
-                newKey:$newKey.val(),
-                repKey:$repKey.val()
-            },
-            success: function (res) {
-                var resObj = $.parseJSON(res);
-                layer.msg(resObj.msg);
-            },
-            error:function () {
-                layer.msg('网络错误');
-            }
-        });
-    });
+    //public
     layui.use(['form', 'laydate', 'table'], function() {
         let table = layui.table,
             laydate = layui.laydate;
@@ -170,5 +121,140 @@ $(function () {
                 });
             }
         });
+    });
+
+    // show
+    $('#search').click(function () {
+        let pid = $('#pid').val();
+        if(!pid){
+            layer.msg('请输入项目编号');
+            return false;
+        }
+
+        layui.use('table', function(){
+            let table = layui.table;
+
+            table.render({
+                elem: '#view',
+                url: '/manager/page/project/jsp/search.jsp?pid='+pid,
+                cols: [[
+                    {field:'pid', title: '项目编号',align:'center', width:150},
+                    {field:'name', title: '项目名',align:'center', width:250},
+                    {field:'date', title: '创建日期',align:'center', width:150},
+                    {field:'fzr', title: '负责人',align:'center', width:150},
+                    {field:'dsc', title: '项目描述',align:'center', width:350}
+                ]],
+                done: function(res){
+                    if(res.data.length === 0){
+                        layer.msg('未查询到该项目');
+                    }
+                },
+                page: true,
+                height: 315,
+            });
+        });
+    });
+
+    // add
+    $('#create').click(function () {
+        let $name = $('#name'),
+            $manager = $('#manager'),
+            $page = $('#page .layui-form-checked span'),
+            $back = $('#back .layui-form-checked span'),
+            $test = $('#test .layui-form-checked span');
+        if($page.length ===0){
+            layer.msg('请勾选前端开发人员');
+            return false;
+        }
+        if($back.length ===0){
+            layer.msg('请勾选后端开发人员');
+            return false;
+        }
+        if($test.length ===0){
+            layer.msg('请勾选测试人员');
+            return false;
+        }
+        let pageStr = '',
+            backStr = '',
+            testStr = '';
+        for(let i=0;i<$page.length;i++){
+            if(i === $page.length-1){
+                pageStr += $page.eq(i).text();
+            }else {
+                pageStr += $page.eq(i).text() +'、';
+            }
+        }
+        for(let i=0;i<$back.length;i++){
+            if(i === $back.length-1){
+                backStr += $back.eq(i).text();
+            }else {
+                backStr += $back.eq(i).text() +'、';
+            }
+        }
+        for(let i=0;i<$test.length;i++){
+            if(i === $test.length-1){
+                testStr += $test.eq(i).text();
+            }else {
+                testStr += $test.eq(i).text() +'、';
+            }
+        }
+        $.ajax({
+            type:'post',
+            url:'/manager/page/team/jsp/add.jsp',
+            data:{
+                name:$name.val(),
+                manager:$manager.val(),
+                page:pageStr,
+                back:backStr,
+                test:testStr
+            },
+            success:function (res) {
+                let resObj = $.parseJSON(res);
+                layer.msg(resObj.msg);
+                setTimeout(function () {
+                    window.location.reload()
+                },2000);
+            },
+            error:function () {
+                layer.msg('网络错误');
+            },
+        });
+    });
+
+    //初始化任务创建
+    $.ajax({
+        type:'post',
+        url:'/manager/page/team/jsp/getHr.jsp',
+        success: function (res) {
+            let resObj = $.parseJSON(res);
+            let manager = '',
+                name = '',
+                page = '',
+                back = '',
+                test = '';
+            for(let i=0; i<resObj.name.length;i++){
+                name +='<option value="'+resObj.name[i].name+'">'+resObj.name[i].name+'</option>'
+            }
+            $('#name').append(name);
+            for(let i=0; i<resObj.manager.length;i++){
+                manager +='<option value="'+resObj.manager[i].name+'">'+resObj.manager[i].name+'</option>'
+            }
+            $('#manager').append(manager);
+            for(let i=0; i<resObj.page.length;i++){
+                page +='<input type="checkbox" class="page" lay-skin="primary" title="'+resObj.page[i].name+'">'
+            }
+            $('#page').append(page);
+            for(let i=0; i<resObj.back.length;i++){
+                back +='<input type="checkbox" class="back" lay-skin="primary" title="'+resObj.back[i].name+'">'
+            }
+            $('#back').append(back);
+            for(let i=0; i<resObj.test.length;i++){
+                test +='<input type="checkbox" class="page" lay-skin="primary" title="'+resObj.test[i].name+'">'
+            }
+            $('#test').append(test);
+        },
+        error:function () {
+            layer.msg('网络错误');
+        }
     });
 });

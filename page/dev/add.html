@@ -24,15 +24,19 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">工号：</label>
                     <div class="layui-input-block">
-                        <input type="text" id="uid" autocomplete="off" class="layui-input">
+                        <input type="text" id="uid" autocomplete="off" class="layui-input" maxlength="5">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">性别：</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="sex" autocomplete="off" class="layui-input">
+                    <div class="layui-input-block" style="width: 180px;">
+                        <select id="sex">
+                            <option>请选择</option>
+                            <option>男</option>
+                            <option>女</option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-inline">
@@ -45,8 +49,14 @@
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">职位：</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="position" autocomplete="off" class="layui-input">
+                    <div class="layui-input-block" style="width: 180px;">
+                        <select id="position">
+                            <option>请选择</option>
+                            <option>项目经理</option>
+                            <option>前端开发工程师</option>
+                            <option>后端开发工程师</option>
+                            <option>测试工程师</option>
+                        </select>
                     </div>
                 </div>
             </div>
