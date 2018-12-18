@@ -36,7 +36,7 @@ $(function () {
                     // 删除数据
                     $.ajax({
                         type:'post',
-                        url:'/manager/page/project/jsp/delProject.jsp',
+                        url:'/manager/page/project/jsp/delTeam.jsp',
                         data:{
                             pid: $pid,
                         },
@@ -125,9 +125,9 @@ $(function () {
 
     // show
     $('#search').click(function () {
-        let pid = $('#pid').val();
-        if(!pid){
-            layer.msg('请输入项目编号');
+        let name = $('#name').val();
+        if(!name){
+            layer.msg('请输入项目名');
             return false;
         }
 
@@ -136,13 +136,14 @@ $(function () {
 
             table.render({
                 elem: '#view',
-                url: '/manager/page/project/jsp/search.jsp?pid='+pid,
+                url: '/manager/page/project/jsp/search.jsp?name='+name,
                 cols: [[
-                    {field:'pid', title: '项目编号',align:'center', width:150},
-                    {field:'name', title: '项目名',align:'center', width:250},
-                    {field:'date', title: '创建日期',align:'center', width:150},
+                    {field:'task', title: '任务',align:'center', width:150},
                     {field:'fzr', title: '负责人',align:'center', width:150},
-                    {field:'dsc', title: '项目描述',align:'center', width:350}
+                    {field:'state', title: '状态',align:'center', width:150},
+                    {field:'planefinish', title: '计划完成',align:'center', width:150},
+                    {field:'createtime', title: '创建时间',align:'center', width:150},
+                    {field:'dsc', title: '任务描述',align:'center', width:150}
                 ]],
                 done: function(res){
                     if(res.data.length === 0){

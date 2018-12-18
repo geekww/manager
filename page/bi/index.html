@@ -14,30 +14,22 @@
     </fieldset>
     <div class="v-card">
         <fieldset class="layui-elem-field layui-field-title" style="margin: 50px 0 30px;">
-            <legend>完成率</legend>
+            <legend>我的待办任务</legend>
         </fieldset>
-        <div class="layui-progress" lay-showpercent="true" style="width: 70%">
-            <div class="layui-progress-bar" lay-percent="0%" id="finish"></div>
-        </div>
-        <fieldset class="layui-elem-field layui-field-title" style="margin: 50px 0 30px;">
-            <legend>延误率</legend>
-        </fieldset>
-        <div class="layui-progress" lay-showpercent="true" style="width: 70%">
-            <div class="layui-progress-bar" lay-percent="" id="delay"></div>
-        </div>
+        <ul class="layui-timeline" id="taskRender"></ul>
     </div>
     <div class="v-card">
         <fieldset class="layui-elem-field layui-field-title" style="margin: 50px 0 30px;">
             <legend>完成率</legend>
         </fieldset>
-        <div class="layui-progress" lay-showpercent="true" style="width: 70%">
+        <div class="layui-progress" lay-showpercent="true">
             <div class="layui-progress-bar" lay-percent="0%" id="finish"></div>
         </div>
         <fieldset class="layui-elem-field layui-field-title" style="margin: 50px 0 30px;">
             <legend>延误率</legend>
         </fieldset>
-        <div class="layui-progress" lay-showpercent="true" style="width: 70%">
-            <div class="layui-progress-bar" lay-percent="" id="delay"></div>
+        <div class="layui-progress" lay-showpercent="true">
+            <div class="layui-progress-bar" lay-percent="0%" id="delay"></div>
         </div>
     </div>
 

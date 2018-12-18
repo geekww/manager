@@ -1,14 +1,13 @@
 .main-box{padding: 20px 10px;}
 .inner{width: 700px;}
 .v-card{
-    width: 500px;
+    width: 400px;
     border-radius: 5px;
     transition: all .4s ease 0s;
     float: left;
     background: #fff;
     box-shadow: 10px 10px 10px 0 rgba(15, 37, 64, .15);
-    margin: 10px 50px;
-    padding: 50px;
+    margin: 10px 30px;
+    padding: 0 20px 50px;
     border: 20px solid #EFEEF0;
-    cursor: pointer;
 }

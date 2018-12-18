@@ -12,7 +12,11 @@
   Connection connection=DriverManager.getConnection(url);
   Statement statement = connection.createStatement();
 
+  String uid = request.getParameter("uid");
+
   JSONObject resultObj = new JSONObject();
+  JSONObject row = new JSONObject();
+  JSONArray data = new JSONArray();
 
   String sqltotal="select count(*) as total from uf_task";
   ResultSet rstotal = statement.executeQuery(sqltotal);
@@ -32,7 +36,17 @@
     resultObj.put("delay",rsdelay.getString("delay"));
   }
 
+  String sqltask = "select * from uf_task t1,uf_hrresource t2 where t2.uid='"+uid+"' and t2.name=t1.fzr and t1.state <>'完成' order by t1.planefinish";
+  ResultSet rstask = statement.executeQuery(sqltask);
+  while(rstask.next()) {
+    row.put("task",rstask.getString("task"));
+    row.put("planefinish",rstask.getString("planefinish"));
+    row.put("state",rstask.getString("state"));
+    data.add(row);
+  }
+
   resultObj.put("code",0);
+  resultObj.put("task",data);
   out.print(resultObj);
 
   statement.close();

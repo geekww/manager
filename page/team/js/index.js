@@ -32,13 +32,13 @@ $(function () {
             var data = obj.data;
             if(obj.event === 'del'){
                 layer.confirm('确定删除当前项目？', function(index){
-                    let $pid = data.pid;
+                    let $name = data.name;
                     // 删除数据
                     $.ajax({
                         type:'post',
-                        url:'/manager/page/project/jsp/delProject.jsp',
+                        url:'/manager/page/team/jsp/delTeam.jsp',
                         data:{
-                            pid: $pid,
+                            name: $name,
                         },
                         success: function (res) {
                             let resObj = $.parseJSON(res);

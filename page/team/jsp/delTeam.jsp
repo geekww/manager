@@ -19,24 +19,16 @@
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sql="select * from uf_task where belong LIKE '%"+name+"%'";
-  ResultSet rs = statement.executeQuery(sql);
-  while(rs.next()) {
-    row.put("task",rs.getString("task"));
-    row.put("fzr",rs.getString("fzr"));
-    row.put("state",rs.getString("state"));
-    row.put("planefinish",rs.getString("planefinish"));
-    row.put("createtime",rs.getString("createtime"));
-    row.put("dsc",rs.getString("dsc"));
-    data.add(row);
+  String sqldel = "delete from uf_team where name='"+name+"'";
+  int flag = statement.executeUpdate(sqldel);
+  if(flag == 1){
+    resultObj.put("msg","删除成功");
+  }else{
+    resultObj.put("msg","删除失败");
   }
 
-  resultObj.put("sql",sql);
   resultObj.put("code",0);
-  resultObj.put("data",data);
   out.print(resultObj);
-
-  rs.close();
   statement.close();
   connection.close();
 %>

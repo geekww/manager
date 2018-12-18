@@ -12,23 +12,26 @@
   Connection connection=DriverManager.getConnection(url);
   Statement statement = connection.createStatement();
 
-  //获取页面参数
-  String pid = request.getParameter("pid");
+  String uid = request.getParameter("uid");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sqldel = "delete from uf_project where pid='"+pid+"'";
-  int flag = statement.executeUpdate(sqldel);
-  if(flag == 1){
-    resultObj.put("msg","删除成功");
-  }else{
-    resultObj.put("msg","删除失败");
+  String sql="select * from uf_hrresource where uid='"+uid+"'";
+  ResultSet rs = statement.executeQuery(sql);
+  while(rs.next()) {
+    row.put("name",rs.getString("name"));
+    row.put("sex",rs.getString("sex"));
+    row.put("tel",rs.getString("tel"));
+    row.put("position",rs.getString("position"));
+    data.add(row);
   }
-
   resultObj.put("code",0);
+  resultObj.put("data",data);
   out.print(resultObj);
+
+  rs.close();
   statement.close();
   connection.close();
 %>

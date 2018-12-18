@@ -27,6 +27,7 @@ $(function () {
                     let resObj = $.parseJSON(res);
                     layer.msg(resObj.msg);
                     if(resObj.code === '1'){
+                        document.cookie="uid="+$('#uid').val();
                         setTimeout(function () {
                             window.location.href = "/manager/page/main/index.html";
                         },2000);
