@@ -16,13 +16,13 @@
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sql="select * from uf_project order by pid";
+  String sql="select * from uf_project t1 ,uf_hrresource t2 where t1.manager=t2.uid order by pid";
   ResultSet rs = statement.executeQuery(sql);
   while(rs.next()) {
     row.put("pid",rs.getString("pid"));
-    row.put("name",rs.getString("name"));
+    row.put("pname",rs.getString("pname"));
     row.put("date",rs.getString("date"));
-    row.put("fzr",rs.getString("fzr"));
+    row.put("manager",rs.getString("name"));
     row.put("dsc",rs.getString("dsc"));
     data.add(row);
   }

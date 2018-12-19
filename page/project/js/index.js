@@ -15,9 +15,9 @@ $(function () {
             url: '/manager/page/project/jsp/show.jsp',
             cols: [[
                 {field:'pid', title: '项目编号',align:'center', width:150},
-                {field:'name', title: '项目名',align:'center', width:200},
+                {field:'pname', title: '项目名',align:'center', width:200},
                 {field:'date', title: '创建日期',align:'center', width:150},
-                {field:'fzr', title: '负责人',align:'center', width:150},
+                {field:'manager', title: '项目经理',align:'center', width:150},
                 {field:'dsc', title: '项目描述',align:'center', width:300},
                 {fixed: 'right', title:'操作', toolbar: '#toolbar',align:'center', width:150}
             ]],
@@ -56,7 +56,7 @@ $(function () {
                 // 获取开发人员
                 $.ajax({
                     type:'post',
-                    url:'/manager/page/task/jsp/getHr.jsp',
+                    url:'/manager/page/project/jsp/getHr.jsp',
                     success: function (res) {
                         let resObj = $.parseJSON(res);
                         let strhr = '';
@@ -68,7 +68,7 @@ $(function () {
                             content: '<form>' +
                                 '<label style="width: 70px;display: inline-block;">项目名：</label>' +
                                 '<input type="text" id="name" autocomplete="off" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 160px;"><br>' +
-                                '<label style="width: 70px;display: inline-block;">负责人：</label>' +
+                                '<label style="width: 70px;display: inline-block;">项目经理：</label>' +
                                 '<select id="fzr" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 75px;">' +
                                 strhr+
                                 '</select><br>' +
@@ -76,8 +76,8 @@ $(function () {
                                 '<textarea id="dsc" style="height: 70px;"></textarea>'+
                                 '</form>',
                             success:function () {
-                                $('#name').val(data.name);
-                                $('#fzr').val(data.fzr);
+                                $('#name').val(data.pname);
+                                $('#manager').val(data.manager);
                                 $('#dsc').val(data.dsc);
 
                                 $('.layui-layer-btn0').click(function () {
@@ -139,7 +139,7 @@ $(function () {
                 url: '/manager/page/project/jsp/search.jsp?name='+name,
                 cols: [[
                     {field:'task', title: '任务',align:'center', width:150},
-                    {field:'fzr', title: '负责人',align:'center', width:150},
+                    {field:'manager', title: '项目经理',align:'center', width:150},
                     {field:'state', title: '状态',align:'center', width:150},
                     {field:'planefinish', title: '计划完成',align:'center', width:150},
                     {field:'createtime', title: '创建时间',align:'center', width:150},
@@ -159,8 +159,8 @@ $(function () {
     // add
     $('#create').click(function () {
         let $pid = $('#pid'),
-            $name = $('#name'),
-            $fzr = $('#fzr'),
+            $pname = $('#pname'),
+            $manager = $('#manager'),
             $date = $('#date'),
             $dsc = $('#dsc');
 
@@ -169,12 +169,12 @@ $(function () {
             layer.msg('请输入项目编号');
             return false;
         }
-        if(!$name.val()){
+        if(!$pname.val()){
             layer.msg('请输入项目名');
             return false;
         }
-        if(!$fzr.val()){
-            layer.msg('请输入负责人');
+        if(!$manager.val()){
+            layer.msg('请输入项目经理');
             return false;
         }
         if(!$date.val()){
@@ -187,8 +187,8 @@ $(function () {
             url:'/manager/page/project/jsp/add.jsp',
             data:{
                 pid:$pid.val(),
-                name:$name.val(),
-                fzr:$fzr.val(),
+                pname:$pname.val(),
+                manager:$manager.val(),
                 date:$date.val(),
                 dsc:$dsc.val()
             },
@@ -213,9 +213,9 @@ $(function () {
             let resObj = $.parseJSON(res);
             let strhr = '';
             for(let i=0; i<resObj.datahr.length;i++){
-                strhr +='<option value="'+resObj.datahr[i].name+'">'+resObj.datahr[i].name+'</option>'
+                strhr +='<option value="'+resObj.datahr[i].uid+'">'+resObj.datahr[i].name+'</option>'
             }
-            $('#fzr').append(strhr);
+            $('#manager').append(strhr);
         },
         error:function () {
             layer.msg('网络错误');

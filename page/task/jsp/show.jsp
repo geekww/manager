@@ -17,9 +17,9 @@
 
   String sql ="";
   if(task == null ){
-    sql="select * from uf_task order by id";
+    sql="select * from uf_task t1,uf_hrresource t2,uf_project t3 where t1.fzr=t2.uid and t1.belong=t3.pid";
   }else{
-    sql="select * from uf_task where task = '"+task+"' order by id";
+    sql="select * from uf_task t1,uf_hrresource t2,uf_project t3 where task = '"+task+"' and t1.fzr=t2.uid and t1.belong=t3.pid";
   }
 
   JSONObject resultObj = new JSONObject();
@@ -29,15 +29,13 @@
   ResultSet rs = statement.executeQuery(sql);
   while(rs.next()) {
     row.put("id",rs.getString("id"));
-    row.put("belong",rs.getString("belong"));
+    row.put("belong",rs.getString("pname"));
     row.put("task",rs.getString("task"));
     row.put("createtime",rs.getString("createtime"));
     row.put("planefinish",rs.getString("planefinish"));
-    row.put("fzr",rs.getString("fzr"));
-    row.put("cjz",rs.getString("cjz"));
+    row.put("fzr",rs.getString("name"));
     row.put("state",rs.getString("state"));
     row.put("dsc",rs.getString("dsc"));
-    row.put("bz",rs.getString("bz"));
     data.add(row);
   }
   resultObj.put("code",0);

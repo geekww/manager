@@ -14,8 +14,8 @@
 
   //获取页面参数
   String pid = request.getParameter("pid");
-  String name = request.getParameter("name");
-  String fzr = request.getParameter("fzr");
+  String pname = request.getParameter("pname");
+  String manager = request.getParameter("manager");
   String date = request.getParameter("date");
   String dsc = request.getParameter("dsc");
 
@@ -24,7 +24,7 @@
   JSONArray data = new JSONArray();
 
   String sql = "select * from uf_project where pid='"+pid+"'";
-  String sqlinsert = "insert into uf_project (pid,name,fzr,date,dsc) values ('"+pid+"','"+name+"','"+fzr+"','"+date+"','"+dsc+"')";
+  String sqlinsert = "insert into uf_project (pid,pname,manager,date,dsc) values ('"+pid+"','"+pname+"','"+manager+"','"+date+"','"+dsc+"')";
 
   ResultSet rs = statement.executeQuery(sql);
   if(rs.next()) {

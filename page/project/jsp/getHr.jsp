@@ -17,7 +17,7 @@
   JSONArray datahr = new JSONArray();
 
   // 查询人员
-  String sqlhr="select * from uf_hrresource where uid <> 'admin' order by uid";
+  String sqlhr="select * from uf_hrresource where position ='项目经理'";
   ResultSet rshr = statement.executeQuery(sqlhr);
   while(rshr.next()) {
     rowhr.put("uid",rshr.getString("uid"));

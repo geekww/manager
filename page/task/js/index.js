@@ -14,7 +14,7 @@ $(function () {
                 url: '/manager/page/task/jsp/show.jsp?task='+task,
                 cols: [[
                     {field:'id', title: 'id',align:'center',width:100},
-                    // {field:'belong', title: '所属项目',align:'center',width:180},
+                    {field:'belong', title: '项目',align:'center',width:180},
                     {field:'task', title: '任务名',align:'center',width:200},
                     {field:'createtime', title: '创建时间',align:'center',width:110},
                     {field:'planefinish', title: '计划完成时间',align:'center',width:120},
@@ -37,11 +37,10 @@ $(function () {
 
     $('#add').click(function () {
         let $task = $('#task'),
-            $belong = $('#belong').parent().find('input'),
+            $belong = $('#belong'),
             $create = $('#create'),
             $planeFinish = $('#planeFinish'),
-            $fzr = $('#fzr').parent().find('input'),
-            $cjz = $('#cjz').parent().find('input'),
+            $fzr = $('#fzr'),
             $dsc= $('#dsc');
 
         if(!$task.val()){
@@ -64,10 +63,6 @@ $(function () {
             layer.msg('请填写负责人');
             return false;
         }
-        if(!$cjz.val()){
-            layer.msg('请填写任务创建人');
-            return false;
-        }
         if(!$dsc.val()){
             layer.msg('请填写任务详情');
             return false;
@@ -82,7 +77,6 @@ $(function () {
                 create:$create.val(),
                 planeFinish:$planeFinish.val(),
                 fzr:$fzr.val(),
-                cjz:$cjz.val(),
                 dsc:$dsc.val()
             },
             success:function (res) {
@@ -117,15 +111,13 @@ $(function () {
             url: '/manager/page/task/jsp/show.jsp',
             cols: [[
                 {field:'id', title: 'id',align:'center',width:100},
-                // {field:'belong', title: '所属项目',align:'center',width:180},
+                {field:'belong', title: '项目',align:'center',width:180},
                 {field:'task', title: '任务名',align:'center',width:200},
                 {field:'createtime', title: '创建时间',align:'center',width:110},
                 {field:'planefinish', title: '计划完成时间',align:'center',width:120},
                 {field:'fzr', title: '负责人',align:'center',width:80},
-                {field:'cjz', title: '创建者',align:'center',width:80},
                 {field:'state', title: '任务状态',align:'center',width:90},
                 {field:'dsc', title: '任务描述',align:'center',width:200},
-                {field:'bz', title: '备注',align:'center',width:100},
                 {fixed: 'right', title:'操作', toolbar: '#toolbar',align:'center', width:150}
             ]],
             done: function(res){
@@ -212,14 +204,9 @@ $(function () {
                                         $oldState = data.state,
                                         $oldFzr = data.fzr,
                                         $state = $('#di-state'),
-                                        $fzr = $('#di-fzr option:selected'),
+                                        $fzr = $('#di-fzr'),
                                         $date = $('#di-date'),
                                         $bz = $('#bz').val();
-
-                                    if($oldState === $state.val() && $oldFzr ===$fzr.text()){
-                                        layer.msg('任务状态未做修改');
-                                        return false;
-                                    }
 
                                     $.ajax({
                                         type:'post',
@@ -227,7 +214,7 @@ $(function () {
                                         data:{
                                             tid:$tid,
                                             state:$state.val(),
-                                            fzr:$fzr.text(),
+                                            fzr:$fzr.val(),
                                             date:$date.val(),
                                             bz:$bz
                                         },
@@ -319,14 +306,13 @@ $(function () {
             let str = '',
                 strhr = '';
             for(let i=0; i<resObj.data.length;i++){
-                str +='<option value="'+resObj.data[i].pid+'">'+resObj.data[i].name+'</option>'
+                str +='<option value="'+resObj.data[i].pid+'">'+resObj.data[i].pname+'</option>'
             }
             for(let i=0; i<resObj.datahr.length;i++){
                 strhr +='<option value="'+resObj.datahr[i].uid+'">'+resObj.datahr[i].name+'</option>'
             }
             $('#belong').append(str);
             $('#fzr').append(strhr);
-            $('#cjz').append(strhr);
 
             renderForm();
         },

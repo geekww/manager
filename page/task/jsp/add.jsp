@@ -18,14 +18,13 @@
   String createtime = request.getParameter("create");
   String planeFinish = request.getParameter("planeFinish");
   String fzr = request.getParameter("fzr");
-  String cjz = request.getParameter("cjz");
   String dsc = request.getParameter("dsc");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sqlinsert = "insert into uf_task (task,belong,createtime,planeFinish,fzr,cjz,dsc) values ('"+task+"','"+belong+"','"+createtime+"','"+planeFinish+"','"+fzr+"','"+cjz+"','"+dsc+"')";
+  String sqlinsert = "insert into uf_task (task,belong,createtime,planeFinish,fzr,dsc) values ('"+task+"','"+belong+"','"+createtime+"','"+planeFinish+"','"+fzr+"','"+dsc+"')";
   int flag = statement.executeUpdate(sqlinsert);
   if(flag == 1){
     resultObj.put("msg","添加成功");

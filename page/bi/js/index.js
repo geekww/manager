@@ -51,6 +51,10 @@ $(function () {
         });
     });
 
+    layui.use('element', function(){
+
+    });
+
     let uid = getCookie('uid');
     $.ajax({
         type: "post",

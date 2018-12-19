@@ -22,7 +22,7 @@
   ResultSet rs = statement.executeQuery(sql);
   while(rs.next()) {
     row.put("pid",rs.getString("pid"));
-    row.put("name",rs.getString("name"));
+    row.put("pname",rs.getString("pname"));
     data.add(row);
   }
   // 查询人员
