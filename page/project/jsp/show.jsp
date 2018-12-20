@@ -23,6 +23,7 @@
     row.put("pname",rs.getString("pname"));
     row.put("date",rs.getString("date"));
     row.put("manager",rs.getString("name"));
+    row.put("uid",rs.getString("uid"));
     row.put("dsc",rs.getString("dsc"));
     data.add(row);
   }

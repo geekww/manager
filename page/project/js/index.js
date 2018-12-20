@@ -19,7 +19,8 @@ $(function () {
                 {field:'date', title: '创建日期',align:'center', width:150},
                 {field:'manager', title: '项目经理',align:'center', width:150},
                 {field:'dsc', title: '项目描述',align:'center', width:300},
-                {fixed: 'right', title:'操作', toolbar: '#toolbar',align:'center', width:150}
+                {fixed: 'right', title:'操作', toolbar: '#toolbar',align:'center', width:150},
+                {field:'uid', title: '项目经理工号',align:'center', width:150},
             ]],
             done: function(res){
 
@@ -36,7 +37,7 @@ $(function () {
                     // 删除数据
                     $.ajax({
                         type:'post',
-                        url:'/manager/page/project/jsp/delTeam.jsp',
+                        url:'/manager/page/project/jsp/delProject.jsp',
                         data:{
                             pid: $pid,
                         },
@@ -61,32 +62,32 @@ $(function () {
                         let resObj = $.parseJSON(res);
                         let strhr = '';
                         for(let i=0; i<resObj.datahr.length;i++){
-                            strhr +='<option value="'+resObj.datahr[i].name+'">'+resObj.datahr[i].name+'</option>'
+                            strhr +='<option value="'+resObj.datahr[i].uid+'">'+resObj.datahr[i].name+'</option>'
                         }
                         layer.open({
                             title: '修改项目',
                             content: '<form>' +
                                 '<label style="width: 70px;display: inline-block;">项目名：</label>' +
-                                '<input type="text" id="name" autocomplete="off" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 160px;"><br>' +
+                                '<input type="text" id="pname" autocomplete="off" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 160px;"><br>' +
                                 '<label style="width: 70px;display: inline-block;">项目经理：</label>' +
-                                '<select id="fzr" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 75px;">' +
+                                '<select id="manager" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 75px;">' +
                                 strhr+
                                 '</select><br>' +
                                 '<label style="width: 70px;display: inline-block;vertical-align: top;">项目描述：</label>' +
                                 '<textarea id="dsc" style="height: 70px;"></textarea>'+
                                 '</form>',
                             success:function () {
-                                $('#name').val(data.pname);
-                                $('#manager').val(data.manager);
+                                $('#pname').val(data.pname);
+                                $('#manager').val(data.uid);
                                 $('#dsc').val(data.dsc);
 
                                 $('.layui-layer-btn0').click(function () {
                                     let $pid = data.pid,
-                                        $name = $('#name').val(),
-                                        $fzr = $('#fzr').val(),
+                                        $pname = $('#pname').val(),
+                                        $manager = $('#manager').val(),
                                         $dsc = $('#dsc').val();
 
-                                    if(!$name){
+                                    if(!$pname){
                                         layer.msg('请输入项目名');
                                         return false;
                                     }
@@ -96,8 +97,8 @@ $(function () {
                                         url:'/manager/page/project/jsp/updateProject.jsp',
                                         data:{
                                             pid: $pid,
-                                            name: $name,
-                                            fzr: $fzr,
+                                            pname: $pname,
+                                            manager: $manager,
                                             dsc: $dsc
                                         },
                                         success: function (res) {

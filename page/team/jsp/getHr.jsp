@@ -13,30 +13,31 @@
   Statement statement = connection.createStatement();
 
   JSONObject resultObj = new JSONObject();
-  JSONObject rowname = new JSONObject();
+  JSONObject rowpname = new JSONObject();
   JSONObject rowmanager = new JSONObject();
   JSONObject rowpage = new JSONObject();
   JSONObject rowback = new JSONObject();
   JSONObject rowtest = new JSONObject();
 
-  JSONArray dataname = new JSONArray();
+  JSONArray datapname = new JSONArray();
   JSONArray datamanager = new JSONArray();
   JSONArray datapage = new JSONArray();
   JSONArray databack = new JSONArray();
   JSONArray datatest = new JSONArray();
 
   // 查询人员
-  String sqlname="select * from uf_project";
+  String sqlpname="select * from uf_project";
   String sqlmanager="select * from uf_hrresource where position='项目经理'";
   String sqlpage="select * from uf_hrresource where position='前端开发工程师'";
   String sqlback="select * from uf_hrresource where position='后端开发工程师'";
   String sqltest="select * from uf_hrresource where position='测试工程师'";
 
-  ResultSet rsname = statement.executeQuery(sqlname);
-  while(rsname.next()) {
-    rowname.put("pid",rsname.getString("pid"));
-    rowname.put("name",rsname.getString("name"));
-    dataname.add(rowname);
+  ResultSet rspname = statement.executeQuery(sqlpname);
+  while(rspname.next()) {
+    rowpname.put("pid",rspname.getString("pid"));
+    rowpname.put("pname",rspname.getString("pname"));
+    rowpname.put("manager",rspname.getString("manager"));
+    datapname.add(rowpname);
   }
   ResultSet rsmanager = statement.executeQuery(sqlmanager);
   while(rsmanager.next()) {
@@ -64,7 +65,7 @@
   }
 
   resultObj.put("code",0);
-  resultObj.put("name",dataname);
+  resultObj.put("pname",datapname);
   resultObj.put("manager",datamanager);
   resultObj.put("page",datapage);
   resultObj.put("back",databack);

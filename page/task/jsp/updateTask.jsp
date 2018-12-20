@@ -17,14 +17,14 @@
   String state = request.getParameter("state");
   String fzr = request.getParameter("fzr");
   String date = request.getParameter("date");
-  String bz = request.getParameter("bz");
+  String dsc = request.getParameter("dsc");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sqlupdate = "update uf_task set fzr='"+fzr+"',state='"+state+"',date='"+date+"',bz='"+bz+"' where id='"+tid+"'";
-  String sqlinsert = "insert into uf_task_record (mainid,state,fzr,date,bz) values ('"+tid+"','"+state+"','"+fzr+"','"+date+"','"+bz+"')";
+  String sqlupdate = "update uf_task set fzr='"+fzr+"',state='"+state+"',date='"+date+"',dsc='"+dsc+"' where id='"+tid+"'";
+  String sqlinsert = "insert into uf_task_record (mainid,state,fzr,date,dsc) values ('"+tid+"','"+state+"','"+fzr+"','"+date+"','"+dsc+"')";
   statement.executeUpdate(sqlinsert);
   int flag = statement.executeUpdate(sqlupdate);
   if(flag == 1){

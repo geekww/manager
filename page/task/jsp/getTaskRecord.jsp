@@ -26,7 +26,7 @@
     row.put("fzr",rs.getString("fzr"));
     row.put("date",rs.getString("date"));
     row.put("state",rs.getString("state"));
-    row.put("bz",rs.getString("bz"));
+    row.put("dsc",rs.getString("dsc"));
     data.add(row);
   }
   resultObj.put("code",0);

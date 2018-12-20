@@ -36,7 +36,7 @@
     resultObj.put("delay",rsdelay.getString("delay"));
   }
 
-  String sqltask = "select * from uf_task t1,uf_hrresource t2 where t2.uid='"+uid+"' and t2.name=t1.fzr and t1.state <>'完成' order by t1.planefinish";
+  String sqltask = "select * from uf_task t1,uf_hrresource t2 where t1.fzr='"+uid+"' and t2.uid=t1.fzr and t1.state <>'完成' order by t1.planefinish";
   ResultSet rstask = statement.executeQuery(sqltask);
   while(rstask.next()) {
     row.put("task",rstask.getString("task"));
@@ -45,6 +45,7 @@
     data.add(row);
   }
 
+  resultObj.put("sql",sqltask);
   resultObj.put("code",0);
   resultObj.put("task",data);
   out.print(resultObj);

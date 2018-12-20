@@ -2,10 +2,12 @@ $(function () {
     $('#login-btn').click(function () {
         // 登录校验
         var _validatePost = function(){
+            var reg = /^[0-9]*$/;
             var $uid = $('#uid'),
                 $password =  $('#password');
 
-            if(!$uid.val()){
+            //正则校验和非空校验
+            if(!reg.test($uid.val())){
                 layer.msg('请输入您的账号');
                 return false;
             }

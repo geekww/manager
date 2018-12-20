@@ -36,6 +36,7 @@
     row.put("fzr",rs.getString("name"));
     row.put("state",rs.getString("state"));
     row.put("dsc",rs.getString("dsc"));
+    row.put("uid",rs.getString("uid"));
     data.add(row);
   }
   resultObj.put("code",0);

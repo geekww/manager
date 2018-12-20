@@ -12,44 +12,112 @@
     <fieldset class="layui-elem-field layui-field-title">
         <legend>创建团队</legend>
     </fieldset>
-    <div class="inner">
-        <form class="layui-form layui-form-pane" id="teamAdd">
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">选择项目：</label>
-                    <div class="layui-input-block">
-                        <select id="name"></select>
+    <div class="create-box">
+        <div class="step">
+            <div class="step-item" style="width: 36%;">
+                <div class="step-item-tail">
+                    <i class="step-item-tail-done"></i>
+                </div>
+                <div class="step-item-head">
+                    <i class="layui-icon layui-icon-ok"></i>
+                </div>
+                <div class="step-item-main">
+                    <div class="step-item-main-title">第一步</div>
+                    <div class="step-item-main-desc">选择项目</div>
+                </div>
+            </div>
+            <div class="step-item" style="width: 36%;">
+                <div class="step-item-tail">
+                    <i class=""></i>
+                </div>
+                <div class="step-item-head step-item-head-active">
+                    <i class="layui-icon">2</i></div>
+                <div class="step-item-main">
+                    <div class="step-item-main-title">第二步</div>
+                    <div class="step-item-main-desc">选择开发人员</div>
+                </div>
+            </div>
+            <div class="step-item" style="width: 20%;">
+                <div class="step-item-head step-item-head-active">
+                    <i class="layui-icon">3</i>
+                </div>
+                <div class="step-item-main">
+                    <div class="step-item-main-title">第三步</div>
+                    <div class="step-item-main-desc">填写职责</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-card select-project">
+            <form class="layui-form layui-form-pane">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">选择项目：</label>
+                        <div class="layui-input-block">
+                            <select id="pname"></select>
+                        </div>
                     </div>
                 </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">项目经理：</label>
-                    <div class="layui-input-block">
-                        <select id="manager"></select>
+                <div class="layui-form-item">
+                    <div class="layui-btn-group">
+                        <input type="button" class="layui-btn" id="project-next" value="下一步">
                     </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">前端开发：</label>
-                    <div class="layui-input-block" id="page" style="width:550px;border: 1px solid #e6e6e6;min-height: 38px;"></div>
+            </form>
+        </div>
+        <div class="step-card select-dev">
+            <form class="layui-form layui-form-pane">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">前端开发：</label>
+                        <div class="layui-input-block" id="page" style="border: 1px solid #e6e6e6;min-height: 38px;"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">后端开发：</label>
-                    <div class="layui-input-block" id="back" style="width:550px;border: 1px solid #e6e6e6;min-height: 38px;"></div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">后端开发：</label>
+                        <div class="layui-input-block" id="back" style="border: 1px solid #e6e6e6;min-height: 38px;"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">测试：</label>
-                    <div class="layui-input-block" id="test" style="width:550px;border: 1px solid #e6e6e6;min-height: 38px;"></div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">测试：</label>
+                        <div class="layui-input-block" id="test" style="border: 1px solid #e6e6e6;min-height: 38px;"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <input type="button" class="layui-btn" id="create" value="提交">
-            </div>
-        </form>
+                <div class="layui-form-item">
+                    <div class="layui-btn-group">
+                        <input type="button" class="layui-btn" id="dev-last" value="上一步">
+                        <input type="button" class="layui-btn" id="dev-next" value="下一步">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="step-card select-finish">
+            <form class="layui-form layui-form-pane">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">林燕：</label>
+                        <div class="layui-input-block">
+                            <input type="text" autocomplete="off" class="layui-input duty" placeholder="填写职责">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">林燕：</label>
+                        <div class="layui-input-block">
+                            <input type="text" autocomplete="off" class="layui-input duty" placeholder="填写职责">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-btn-group">
+                        <input type="button" class="layui-btn" id="create" value="立即创建">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -57,6 +125,6 @@
 <script src="/manager/plugin/layer/layer.js"></script>
 <script src="/manager/plugin/layui/layui.js"></script>
 <script src="/manager/theme/js/public.js"></script>
-<script src="./js/index.js"></script>
+<script src="./js/step.js"></script>
 </body>
 </html>

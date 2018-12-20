@@ -22,7 +22,6 @@ $(function () {
                     {field:'cjz', title: '创建者',align:'center',width:80},
                     {field:'state', title: '任务状态',align:'center',width:90},
                     {field:'dsc', title: '任务描述',align:'center',width:200},
-                    {field:'bz', title: '备注',align:'center',width:100},
                     {fixed: 'right', title:'操作', toolbar: '#toolbar', align:'center',width:150}
                 ]],
                 done: function(res){
@@ -118,7 +117,8 @@ $(function () {
                 {field:'fzr', title: '负责人',align:'center',width:80},
                 {field:'state', title: '任务状态',align:'center',width:90},
                 {field:'dsc', title: '任务描述',align:'center',width:200},
-                {fixed: 'right', title:'操作', toolbar: '#toolbar',align:'center', width:150}
+                {fixed: 'right', title:'操作', toolbar: '#toolbar',align:'center', width:150},
+                {field:'uid', title: '负责人工号',align:'center',width:200},
             ]],
             done: function(res){
 
@@ -178,8 +178,8 @@ $(function () {
                                 '</select><br>' +
                                 '<label style="width: 70px;display: inline-block;">操作日期：</label>' +
                                 '<input type="text" id="di-date" autocomplete="off" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 100px;"><br>' +
-                                '<label style="width: 70px;display: inline-block;vertical-align: top;">备注：</label>' +
-                                '<textarea id="bz" style="width: 150px;height: 70px;"></textarea>'+
+                                '<label style="width: 70px;display: inline-block;vertical-align: top;">任务描述：</label>' +
+                                '<textarea id="dsc" style="width: 150px;height: 70px;"></textarea>'+
                                 '</form>',
                             success:function () {
                                 // 获取当前日期
@@ -197,7 +197,8 @@ $(function () {
                                 let todayDate = year + line + month + line + day;
                                 $('#di-date').val(todayDate);
                                 $('#di-state').val(data.state);
-                                $('#bz').val(data.bz);
+                                $('#dsc').val(data.dsc);
+                                $('#di-fzr').val(data.uid);
 
                                 $('.layui-layer-btn0').click(function () {
                                     var $tid = data.id,
@@ -206,7 +207,7 @@ $(function () {
                                         $state = $('#di-state'),
                                         $fzr = $('#di-fzr'),
                                         $date = $('#di-date'),
-                                        $bz = $('#bz').val();
+                                        $dsc = $('#dsc').val();
 
                                     $.ajax({
                                         type:'post',
@@ -216,7 +217,7 @@ $(function () {
                                             state:$state.val(),
                                             fzr:$fzr.val(),
                                             date:$date.val(),
-                                            bz:$bz
+                                            dsc:$dsc
                                         },
                                         success: function (res) {
                                             let resObj = $.parseJSON(res);
@@ -252,7 +253,7 @@ $(function () {
                                                         '<h3 class="layui-timeline-title">'+resObj.data[i].date+'</h3>' +
                                                         '<p>责任人：'+resObj.data[i].fzr+'</p>' +
                                                         '<p>状态：'+resObj.data[i].state+'</p>' +
-                                                        '<p>备注：'+resObj.data[i].bz+'</p>' +
+                                                        '<p>任务描述：'+resObj.data[i].dsc+'</p>' +
                                                         '</div>' +
                                                         '</li>';
                                                 }
@@ -328,3 +329,4 @@ $(function () {
         });
     }
 });
+

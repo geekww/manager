@@ -14,15 +14,15 @@
 
   //获取页面参数
   String pid = request.getParameter("pid");
-  String name = request.getParameter("name");
-  String fzr = request.getParameter("fzr");
+  String pname = request.getParameter("pname");
+  String manager = request.getParameter("manager");
   String dsc = request.getParameter("dsc");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sqlupdate = "update uf_project set fzr='"+fzr+"',name='"+name+"',dsc='"+dsc+"' where pid='"+pid+"'";
+  String sqlupdate = "update uf_project set manager='"+manager+"',pname='"+pname+"',dsc='"+dsc+"' where pid='"+pid+"'";
   int flag = statement.executeUpdate(sqlupdate);
   if(flag == 1){
     resultObj.put("msg","修改成功");

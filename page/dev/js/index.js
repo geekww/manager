@@ -100,7 +100,13 @@ $(function () {
                     title: '修改用户信息',
                     content: '<form>' +
                         '<label style="width: 70px;display: inline-block;">职位：</label>' +
-                        '<input type="text" id="position" autocomplete="off" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 160px;"><br>' +
+                        // '<input type="text" id="position" autocomplete="off" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 160px;"><br>' +
+                        '<select id="position" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 160px;">' +
+                        '<option value="项目经理">项目经理</option>'+
+                        '<option value="前端开发工程师">前端开发工程师</option>'+
+                        '<option value="后端开发工程师">后端开发工程师</option>'+
+                        '<option value="测试工程师">测试工程师</option>'+
+                        '</select><br>'+
                         '<label style="width: 70px;display: inline-block;">电话号码：</label>' +
                         '<input type="text" id="tel" autocomplete="off" style="padding: 4px;font-size: 14px;margin-bottom: 10px;width: 160px;"><br>' +
                         '</form>',

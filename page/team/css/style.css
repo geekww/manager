@@ -1,3 +1,106 @@
 .main-box{padding: 20px 10px;}
 .inner{width: 700px;}
 
+.card-view{
+    padding: 20px; background-color: #F2F2F2;overflow: auto;width: 800px;
+    margin-bottom: 30px;
+}
+.layui-card-header{
+    font-size: 18px;
+}
+.layui-card-body{
+    line-height: 40px;
+}
+.position{
+    width: 100px;
+    display: inline-block;
+}
+.layui-table th{
+    text-align: center;
+}
+.layui-table td{
+    width: 33%;
+    text-align: center;
+}
+/*步骤*/
+.create-box{
+    margin: 0 auto;
+    width: 1000px;
+}
+.step-card{
+    background-color: #fff;overflow: auto;width: 800px;border: 20px solid #F2F2F2;
+    padding: 20px;margin-bottom: 20px;
+}
+
+.step-item {
+    display: inline-block;
+    line-height: 26px;
+    position: relative;
+    background: #ffffff;
+}
+
+.step-item-tail {
+    width: 100%;
+    padding: 0 10px;
+    position: absolute;
+    left: 0;
+    top: 13px;
+}
+
+.step-item-tail i {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    vertical-align: top;
+    background: #c2c2c2;
+    position: relative;
+}
+.step-item-tail-done {
+    background: #009688 !important;
+}
+
+.step-item-head {
+    position: relative;
+    display: inline-block;
+    height: 26px;
+    width: 26px;
+    text-align: center;
+    vertical-align: top;
+    color: #009688;
+    border: 1px solid #009688;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.step-item-head.step-item-head-active {
+    background: #009688;
+    color: #ffffff;
+}
+
+.step-item-main {
+    background: #ffffff;
+    display: block;
+    position: relative;
+}
+
+.step-item-main-title {
+    font-weight: bolder;
+    color: #555555;
+}
+.step-item-main-desc {
+    color: #aaaaaa;
+}
+
+.layui-form-item .layui-btn-group{
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+.layui-form-item .layui-btn{
+    margin: 0 10px!important;
+}
+.layui-form-item .layui-inline{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
