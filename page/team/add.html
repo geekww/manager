@@ -65,7 +65,7 @@
                 </div>
             </form>
         </div>
-        <div class="step-card select-dev">
+        <div class="step-card select-dev" style="display: none;">
             <form class="layui-form layui-form-pane">
                 <div class="layui-form-item">
                     <div class="layui-inline">
@@ -93,24 +93,9 @@
                 </div>
             </form>
         </div>
-        <div class="step-card select-finish">
+        <div class="step-card select-finish" style="display: none;">
             <form class="layui-form layui-form-pane">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">林燕：</label>
-                        <div class="layui-input-block">
-                            <input type="text" autocomplete="off" class="layui-input duty" placeholder="填写职责">
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">林燕：</label>
-                        <div class="layui-input-block">
-                            <input type="text" autocomplete="off" class="layui-input duty" placeholder="填写职责">
-                        </div>
-                    </div>
-                </div>
+                <div id="duty-box"></div>
                 <div class="layui-form-item">
                     <div class="layui-btn-group">
                         <input type="button" class="layui-btn" id="create" value="立即创建">

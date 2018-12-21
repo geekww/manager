@@ -40,20 +40,26 @@ $(function () {
         }
     });
 
-    $('.project-next').click(function () {
+    $('#project-next').click(function () {
         let pname = $('#pname').val();
-        if($pname.length === 0){
+        if(pname.length === 0){
             layer.msg('请选择项目');
             return false;
         }
         //存储项目
+        $('.select-project').hide();
+        $('.select-dev').show();
+    });
+
+    $('#dev-last').click(function () {
+        //存储项目
+        $('.select-dev').hide();
+        $('.select-project').show();
 
     });
 
-    // add
     $('#dev-next').click(function () {
-        let $name = $('#name'),
-            $page = $('#page .layui-form-checked span'),
+        let $page = $('#page .layui-form-checked span'),
             $back = $('#back .layui-form-checked span'),
             $test = $('#test .layui-form-checked span');
         if($page.length ===0){
@@ -68,50 +74,88 @@ $(function () {
             layer.msg('请勾选测试人员');
             return false;
         }
-        let pageStr = '',
-            backStr = '',
-            testStr = '';
+        var str = '';
         for(let i=0;i<$page.length;i++){
-            if(i === $page.length-1){
-                pageStr += $page.eq(i).text();
-            }else {
-                pageStr += $page.eq(i).text() +'、';
-            }
+            str +='<div class="layui-form-item">' +
+                '    <div class="layui-inline">' +
+                '        <label class="layui-form-label">'+$page.eq(i).text()+'：</label>' +
+                '        <div class="layui-input-block">' +
+                '            <input type="text" autocomplete="off" class="layui-input duty" data-dev="'+$page.eq(i).text()+'" data-duty="前端工程师" placeholder="填写职责">' +
+                '        </div>' +
+                '    </div>' +
+                '</div>';
         }
         for(let i=0;i<$back.length;i++){
-            if(i === $back.length-1){
-                backStr += $back.eq(i).text();
-            }else {
-                backStr += $back.eq(i).text() +'、';
-            }
+            str +='<div class="layui-form-item">' +
+                '    <div class="layui-inline">' +
+                '        <label class="layui-form-label">'+$back.eq(i).text()+'：</label>' +
+                '        <div class="layui-input-block">' +
+                '            <input type="text" autocomplete="off" class="layui-input duty" data-dev="'+$back.eq(i).text()+'" data-duty="后端工程师" placeholder="填写职责">' +
+                '        </div>' +
+                '    </div>' +
+                '</div>';
         }
         for(let i=0;i<$test.length;i++){
-            if(i === $test.length-1){
-                testStr += $test.eq(i).text();
-            }else {
-                testStr += $test.eq(i).text() +'、';
+            str +='<div class="layui-form-item">' +
+                '    <div class="layui-inline">' +
+                '        <label class="layui-form-label">'+$test.eq(i).text()+'：</label>' +
+                '        <div class="layui-input-block">' +
+                '            <input type="text" autocomplete="off" class="layui-input duty" data-dev="'+$test.eq(i).text()+'" data-duty="测试工程师" placeholder="填写职责">' +
+                '        </div>' +
+                '    </div>' +
+                '</div>';
+        }
+        //存储人员信息
+        $('#duty-box').append(str);
+        $('.select-dev').hide();
+        $('.select-finish').show();
+    });
+
+    $('#create').click(function () {
+        let duty = $('.duty');
+        for(let i=0;i<duty.length;i++){
+            if(!duty.eq(i).val()){
+                layer.msg('请填写具体职责');
+                return false;
             }
         }
+        for(let i=0;i<duty.length;i++){
+            $.ajax({
+                type:'post',
+                url:'/manager/page/team/jsp/add.jsp',
+                data:{
+                    pname:$('#pname').val(),
+                    dev:duty.eq(i).attr('data-dev'),
+                    duty:duty.eq(i).attr('data-duty'),
+                    detail:duty.eq(i).val(),
+                },
+                success:function (res) {
+
+                },
+                error:function () {
+                    layer.msg('网络错误');
+                },
+            });
+        }
+        // 存储key
         $.ajax({
             type:'post',
-            url:'/manager/page/team/jsp/add.jsp',
+            url:'/manager/page/team/jsp/addkey.jsp',
             data:{
-                name:$name.val(),
-                manager:$manager.val(),
-                page:pageStr,
-                back:backStr,
-                test:testStr
+                pname:$('#pname').val(),
             },
             success:function (res) {
-                let resObj = $.parseJSON(res);
-                layer.msg(resObj.msg);
-                setTimeout(function () {
-                    window.location.reload()
-                },2000);
+                layer.msg('创建成功');
             },
             error:function () {
                 layer.msg('网络错误');
             },
         });
+
+
+
+        // setTimeout(function () {
+        //     window.location.reload()
+        // },2000);
     });
 });

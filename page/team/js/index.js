@@ -123,35 +123,14 @@ $(function () {
         });
     });
 
-    // show
-    $('#search').click(function () {
-        let pid = $('#pid').val();
-        if(!pid){
-            layer.msg('请输入项目编号');
-            return false;
-        }
+    $.ajax({
+        type:'post',
+        url:'/manager/page/team/jsp/show.jsp',
+        success:function (res) {
 
-        layui.use('table', function(){
-            let table = layui.table;
-
-            table.render({
-                elem: '#view',
-                url: '/manager/page/project/jsp/search.jsp?pid='+pid,
-                cols: [[
-                    {field:'pid', title: '项目编号',align:'center', width:150},
-                    {field:'name', title: '项目名',align:'center', width:250},
-                    {field:'date', title: '创建日期',align:'center', width:150},
-                    {field:'fzr', title: '负责人',align:'center', width:150},
-                    {field:'dsc', title: '项目描述',align:'center', width:350}
-                ]],
-                done: function(res){
-                    if(res.data.length === 0){
-                        layer.msg('未查询到该项目');
-                    }
-                },
-                page: true,
-                height: 315,
-            });
-        });
+        },
+        error:function () {
+            layer.msg('网络错误');
+        },
     });
 });

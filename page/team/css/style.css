@@ -28,7 +28,7 @@
     width: 1000px;
 }
 .step-card{
-    background-color: #fff;overflow: auto;width: 800px;border: 20px solid #F2F2F2;
+    background-color: #fff;overflow: hidden;width: 800px;border: 20px solid #F2F2F2;
     padding: 20px;margin-bottom: 20px;
 }
 
