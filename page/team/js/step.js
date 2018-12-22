@@ -6,7 +6,7 @@ $(function () {
     //初始化任务创建
     $.ajax({
         type:'post',
-        url:'/manager/page/team/jsp/getHr.jsp',
+        url:'/manager/page/team/jsp/getTeam.jsp',
         success: function (res) {
             let resObj = $.parseJSON(res);
             let manager = '',
@@ -15,13 +15,9 @@ $(function () {
                 back = '',
                 test = '';
             for(let i=0; i<resObj.pname.length;i++){
-                pname +='<option value="'+resObj.pname[i].pname+'">'+resObj.pname[i].pname+'</option>'
+                pname +='<option value="'+resObj.pname[i].pid+'">'+resObj.pname[i].pname+'</option>'
             }
             $('#pname').append(pname);
-            for(let i=0; i<resObj.manager.length;i++){
-                manager +='<option value="'+resObj.manager[i].name+'">'+resObj.manager[i].name+'</option>'
-            }
-            $('#manager').append(manager);
             for(let i=0; i<resObj.page.length;i++){
                 page +='<input type="checkbox" class="page" lay-skin="primary" title="'+resObj.page[i].name+'">'
             }

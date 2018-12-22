@@ -13,13 +13,13 @@
   Statement statement = connection.createStatement();
 
   //获取页面参数
-  String pname = request.getParameter("pname");
+  String pid = request.getParameter("pname");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sqlinsertkey = "insert into uf_teamkey (pname) values ('"+pname+"')";
+  String sqlinsertkey = "insert into uf_teamkey (pid) values ('"+pid+"')";
   int flag = statement.executeUpdate(sqlinsertkey);
   if(flag == 1){
     resultObj.put("msg","添加成功");
