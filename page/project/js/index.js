@@ -57,7 +57,7 @@ $(function () {
                 // 获取开发人员
                 $.ajax({
                     type:'post',
-                    url:'/manager/page/project/jsp/getTeam.jsp',
+                    url:'/manager/page/project/jsp/getHr.jsp',
                     success: function (res) {
                         let resObj = $.parseJSON(res);
                         let strhr = '';
@@ -209,7 +209,7 @@ $(function () {
     //初始化任务创建
     $.ajax({
         type:'post',
-        url:'/manager/page/project/jsp/getTeam.jsp',
+        url:'/manager/page/project/jsp/getHr.jsp',
         success: function (res) {
             let resObj = $.parseJSON(res);
             let strhr = '';

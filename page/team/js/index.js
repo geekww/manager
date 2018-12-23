@@ -11,6 +11,10 @@ $(function () {
                 str +='<div class="card-view">' +
                     '    <div class="layui-card">' +
                     '        <div class="layui-card-header">'+pname+'</div>' +
+                    '        <div class="edit-box">' +
+                    '           <a class="layui-btn layui-btn-xs edit-team">编辑</a>'+
+                    '           <a class="layui-btn layui-btn-danger layui-btn-xs del-team">删除</a>'+
+                    '        </div>'+
                     '        <div class="layui-card-body">' +
                     '            <table class="layui-table">' +
                     '                <thead>' +
@@ -29,6 +33,16 @@ $(function () {
                     '</div>';
             }
             $('.card').append(str);
+
+            $('.del-team').click(function () {
+                layer.open({
+                    title: '是否删除？',
+                    content: '',
+                    success: function () {
+
+                    }
+                });
+            })
         },
         error:function () {
             layer.msg('网络错误');

@@ -104,3 +104,11 @@
     width: 50%;
     margin: 0 auto;
 }
+.layui-card{
+    position: relative;
+}
+.edit-box{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
