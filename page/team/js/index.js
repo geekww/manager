@@ -8,12 +8,13 @@ $(function () {
             let str = '';
             for(let i=0;i<resObj.data.length;i++){
                 let pname = resObj.data[i].pname;
+                let pid = resObj.data[i].pid;
                 str +='<div class="card-view">' +
                     '    <div class="layui-card">' +
                     '        <div class="layui-card-header">'+pname+'</div>' +
                     '        <div class="edit-box">' +
-                    '           <a class="layui-btn layui-btn-xs edit-team">编辑</a>'+
-                    '           <a class="layui-btn layui-btn-danger layui-btn-xs del-team">删除</a>'+
+                    // '           <a class="layui-btn layui-btn-xs edit-team">编辑</a>'+
+                    '           <a class="layui-btn layui-btn-danger layui-btn-xs del-team" data-pid="'+pid+'">删除</a>'+
                     '        </div>'+
                     '        <div class="layui-card-body">' +
                     '            <table class="layui-table">' +
@@ -34,15 +35,55 @@ $(function () {
             }
             $('.card').append(str);
 
+            //删除
             $('.del-team').click(function () {
-                layer.open({
-                    title: '是否删除？',
-                    content: '',
-                    success: function () {
-
-                    }
+                let $pid = $(this).attr('data-pid');
+                layer.confirm('确定删除当前任务？', function(index){
+                    // 删除数据
+                    $.ajax({
+                        type:'post',
+                        url:'/manager/page/team/jsp/delTeam.jsp',
+                        data:{
+                            pid: $pid,
+                        },
+                        success: function (res) {
+                            let resObj = $.parseJSON(res);
+                            // layer.msg(resObj.msg);
+                        },
+                        error:function () {
+                            layer.msg('网络错误');
+                        }
+                    });
+                    $.ajax({
+                        type:'post',
+                        url:'/manager/page/team/jsp/delTeamKey.jsp',
+                        data:{
+                            pid: $pid,
+                        },
+                        success: function (res) {
+                            let resObj = $.parseJSON(res);
+                            layer.msg(resObj.msg);
+                            setTimeout(function () {
+                                window.location.reload()
+                            },2000);
+                        },
+                        error:function () {
+                            layer.msg('网络错误');
+                        }
+                    });
                 });
-            })
+                // layer.open({
+                //     title: '是否删除？',
+                //     content: '',
+                //     success: function () {
+                //
+                //     }
+                // });
+            });
+            // 编辑
+            $('.edit-team').click(function () {
+
+            });
         },
         error:function () {
             layer.msg('网络错误');

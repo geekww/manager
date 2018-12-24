@@ -13,13 +13,13 @@
   Statement statement = connection.createStatement();
 
   //获取页面参数
-  String pname = request.getParameter("pid");
+  String pid = request.getParameter("pid");
 
   JSONObject resultObj = new JSONObject();
   JSONObject row = new JSONObject();
   JSONArray data = new JSONArray();
 
-  String sqldel = "delete from uf_team where pname='"+pname+"'";
+  String sqldel = "delete from uf_teamkey where pid='"+pid+"'";
   int flag = statement.executeUpdate(sqldel);
   if(flag == 1){
     resultObj.put("msg","删除成功");

@@ -42,6 +42,7 @@
     }
 
     row.put("pname",listname.get(i));
+    row.put("pid",list.get(i));
     row.put("row",datateam);
     datateam = new JSONArray();
     data.add(row);
